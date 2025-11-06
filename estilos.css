@@ -502,3 +502,90 @@ a:focus, button:focus, input:focus, textarea:focus {
 .page-content {
     background: linear-gradient(135deg, #E3F2FD 0%, #F0F8FF 100%);
 }
+/* Estilos para el botón hamburguesa */
+.hamburger {
+    display: none; /* Oculto en desktop */
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 101; /* Por encima del menú */
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #000000;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* Animación del hamburguesa al activarse */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mejoras en el menú móvil */
+#nav-menu {
+    display: flex; /* Visible en desktop */
+}
+
+/* Responsive actualizado */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Muestra el botón en móviles */
+    }
+    
+    #nav-menu {
+        position: absolute;
+        top: 100%; /* Debajo del header */
+        right: 0;
+        width: 250px; /* Ancho del menú desplegable */
+        background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        padding: 20px 0;
+        transform: translateX(100%); /* Oculto inicialmente, desliza desde la derecha */
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 100;
+    }
+    
+    #nav-menu.active {
+        transform: translateX(0); /* Muestra al activarse */
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    #nav-menu li {
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    #nav-menu a {
+        padding: 10px 20px;
+        display: block;
+        color: #000000;
+        transition: background 0.3s ease;
+    }
+    
+    #nav-menu a:hover {
+        background-color: #E3F2FD; /* Azul claro para hover */
+    }
+    
+    /* Ajustes adicionales para móviles */
+    header .container {
+        padding: 10px 20px; /* Reduce padding en móviles */
+    }
+    
+    .logo img {
+        height: 40px; /* Logo más pequeño */
+    }
+}
